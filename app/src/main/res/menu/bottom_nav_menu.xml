@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/addBookFragment"
+        android:title="@string/bottom_item_options"
+        android:icon="@drawable/ic_menu" />
+    <item
+        android:id="@+id/booksFragment"
+        android:title="@string/bottom_item_books"
+        android:icon="@drawable/ic_books" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="@string/bottom_item_settings"
+        android:icon="@drawable/ic_settings" />
+</menu>
