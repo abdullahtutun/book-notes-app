@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/addBookFragment"
-        android:name="com.example.booknotes.fragment.AddBookFragment"
+        android:name="com.example.booknotes.view.AddBookFragment"
         android:label="fragment_add_book"
         tools:layout="@layout/fragment_add_book" />
     <fragment
         android:id="@+id/booksFragment"
-        android:name="com.example.booknotes.fragment.BooksFragment"
+        android:name="com.example.booknotes.view.BooksFragment"
         android:label="fragment_books"
         tools:layout="@layout/fragment_books" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.booknotes.fragment.SettingsFragment"
+        android:name="com.example.booknotes.view.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

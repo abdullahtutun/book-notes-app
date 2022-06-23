@@ -1,4 +1,4 @@
-package com.example.booknotes.fragment
+package com.example.booknotes.view
 
 import android.os.Bundle
 import android.util.Log

@@ -5,20 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".fragment.AddBookFragment">
+    tools:context=".view.AddBookFragment">
 
-    <androidx.appcompat.widget.Toolbar
+    <include
         android:id="@+id/toolbarAddBook"
-        android:layout_width="0dp"
-        android:layout_height="57dp"
-        android:background="@android:color/transparent"
-        app:menu="@menu/add_book_menu"
-        app:navigationIcon="@drawable/ic_exit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.appcompat.widget.Toolbar>
+        layout="@layout/toolbar_add_book"/>
 
     <include
         layout="@layout/card_book"
