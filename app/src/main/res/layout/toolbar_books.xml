@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlToolbarAddBook"
+    android:layout_width="match_parent"
+    android:layout_height="66dp">
+
+    <ImageView
+        android:id="@+id/ivExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ivSave"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="70dp"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:onClick="onExit"
+        android:padding="20dp"
+        android:src="@drawable/ic_filter"
+        app:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/ivSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:onClick="onSave"
+        android:padding="20dp"
+        android:src="@drawable/ic_add"
+        app:tint="@color/black" />
+
+</RelativeLayout>
