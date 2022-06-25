@@ -9,18 +9,83 @@
 
     <include
         android:id="@+id/toolbarAddBook"
-        layout="@layout/toolbar_add_book"/>
+        layout="@layout/toolbar_save_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <LinearLayout
+        android:id="@+id/lyColors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarAddBook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        
+        <ImageView
+            android:id="@+id/color1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/color_flag"
+            android:backgroundTint="@color/color1"/>
+
+        <ImageView
+            android:id="@+id/color2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/color_flag"
+            android:backgroundTint="@color/color2"/>
+
+        <ImageView
+            android:id="@+id/color3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/color_flag"
+            android:backgroundTint="@color/color3"/>
+
+        <ImageView
+            android:id="@+id/color4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/color_flag"
+            android:backgroundTint="@color/color4"/>
+
+        <ImageView
+            android:id="@+id/color5"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/color_flag"
+            android:backgroundTint="@color/color5"/>
+
+        <ImageView
+            android:id="@+id/color6"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/color_flag"
+            android:backgroundTint="@color/color6" />
+
+
+    </LinearLayout>
 
     <include
         layout="@layout/card_book"
         android:id="@+id/includeBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarAddBook" />
+        app:layout_constraintTop_toBottomOf="@+id/lyColors" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputBook"
@@ -72,7 +137,30 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginTop="10dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputAuthor">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="@string/book_tag_hint"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            android:textColor="#636467"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
 

@@ -24,18 +24,4 @@ class BooksFragment : Fragment() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.books_options_menu,menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.bookOptionsAdd){
-            Log.d("Etiket","tıklandı")
-            Toast.makeText(requireContext(),"tıklandı",Toast.LENGTH_SHORT).show()
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
 }

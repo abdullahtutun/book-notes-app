@@ -10,5 +10,6 @@
     <string name="add_books_toolbar">Add Book</string>
     <string name="book_hint">Book</string>
     <string name="author_hint">Author</string>
+    <string name="book_tag_hint">Tag</string>
     <string name="notes">Notes</string>
 </resources>

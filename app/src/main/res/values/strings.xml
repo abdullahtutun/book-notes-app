@@ -9,5 +9,6 @@
     <string name="add_books_toolbar">Kitap Ekle</string>
     <string name="book_hint">Kitap</string>
     <string name="author_hint">Yazar</string>
+    <string name="book_tag_hint">Etiket</string>
     <string name="notes">Notlar</string>
 </resources>
