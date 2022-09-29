@@ -10,12 +10,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="toolbar">#1f1f1f</color>
     <color name="card_book">#ffe5b4</color>
-    <color name="background">#f5fffa</color>
+    <color name="background">#FDF6F0</color>
     <color name="color1">#ffe5b4</color>
     <color name="color2">#F38181</color>
     <color name="color3">#393E46</color>
     <color name="color4">#EAFFD0</color>
     <color name="color5">#95E1D3</color>
     <color name="color6">#3F72AF</color>
+    <color name="colorTextGray">#AEB4BE</color>
 
 </resources>

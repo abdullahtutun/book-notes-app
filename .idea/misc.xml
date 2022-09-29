@@ -25,24 +25,35 @@
         <entry key="..\:/Users/tutun/AndroidStudioProjects/BookNotes/app/src/main/res/menu/bottom_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/BookNotes/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/BookNotes/app/src/main/res/menu/notes_options_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/add_edittext_background.xml" value="0.1075" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/bg_add_edittext.xml" value="0.2085" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/color_flags.xml" value="0.14" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/custom_book.xml" value="0.139" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_add.xml" value="0.14" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_back.xml" value="0.14" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_books.xml" value="0.14" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_done.xml" value="0.1645" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_exit.xml" value="0.14" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_filter.xml" value="0.14" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_menu.xml" value="0.14" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_settings.xml" value="0.14" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/transparent_background.xml" value="0.1725" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/card_book.xml" value="0.6" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/dialog_add_note.xml" value="0.33" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_add_book.xml" value="0.264" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_books.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_notes.xml" value="0.1" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_notes.xml" value="0.176" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_settings.xml" value="0.10462962962962963" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/toolbar_add_book.xml" value="0.253125" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/toolbar_books.xml" value="0.2" />
-        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/toolbar_save_exit.xml" value="0.11481481481481481" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/toolbar_notes.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/toolbar_save_exit.xml" value="0.25" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/transparent_background.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/menu/add_book_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/menu/books_options_menu.xml" value="0.10462962962962963" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/menu/notes_options_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

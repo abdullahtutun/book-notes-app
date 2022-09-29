@@ -9,6 +9,11 @@
     <string name="add_books_toolbar">Kitap Ekle</string>
     <string name="book_hint">Kitap</string>
     <string name="author_hint">Yazar</string>
-    <string name="book_tag_hint">Etiket</string>
+    <string name="book_genre_hint">Tür</string>
     <string name="notes">Notlar</string>
+    <string name="add_note_dialog">Tamam</string>
+    <string name="cancel_add_note_dialog">Vazgeç</string>
+    <string name="book_name">Kitap Adı</string>
+    <string name="book_author">Kitap Yazarı</string>
+    <string name="book_genre">Kitap Türü</string>
 </resources>

@@ -10,9 +10,10 @@
     app:cardElevation="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clCard"
         android:layout_width="180dp"
         android:layout_height="230dp"
-        android:background="@drawable/custom_book"
+        android:background="@color/card_book"
         android:elevation="10dp"
         android:padding="20dp">
 
@@ -23,8 +24,8 @@
             android:fontFamily="@font/playfair_display_regular"
             android:gravity="center"
             android:layout_marginTop="24dp"
-            android:text="Kurt Kapanı"
-            android:textSize="20sp"
+            android:text="@string/book_name"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,19 +36,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
-            android:text="Kemal Tahir"
-            android:textSize="15sp"
+            android:text="@string/book_author"
+            android:textSize="13sp"
             android:fontFamily="@font/playfair_display_regular"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bookName" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/bookTag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="- roman -"
-            android:textSize="10sp"
+            android:text="@string/book_genre"
+            android:textSize="12sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,36 +1,48 @@
 package com.example.booknotes
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.navigation.NavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.booknotes.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var binding: ActivityMainBinding
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHostFragment.navController
+        init()
+
+    }
+
+    private fun init() {
+        val navController = findNavController(R.id.fragmentContainerView)
 
         binding.bottomNavigationView.setupWithNavController(navController)
 
+        /*var currentId = navController.currentDestination?.id
+
+        if(currentId == R.id.booksFragment){
+            binding.bottomNavigationView.visibility = View.VISIBLE
+        } else if(currentId == R.id.settingsFragment) {
+            binding.bottomNavigationView.visibility = View.VISIBLE
+        } else {
+            binding.bottomNavigationView.visibility = View.GONE
+        }*/
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.booksFragment -> binding.bottomAppBar.visibility = View.VISIBLE
+                R.id.settingsFragment -> binding.bottomAppBar.visibility = View.VISIBLE
+                else -> binding.bottomAppBar.visibility = View.GONE
+            }
+        }
 
     }
 
