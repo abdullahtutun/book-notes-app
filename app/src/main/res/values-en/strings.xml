@@ -17,4 +17,8 @@
     <string name="book_name">Book Name</string>
     <string name="book_author">Book Author</string>
     <string name="book_genre">Book Genre</string>
+    <string name="note_page">Note Page</string>
+    <string name="check_book">Please enter book name</string>
+    <string name="check_book_author">Please enter book author</string>
+    <string name="check_book_genre">Please enter book genre</string>
 </resources>

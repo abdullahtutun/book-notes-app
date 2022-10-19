@@ -39,11 +39,14 @@
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/ic_settings.xml" value="0.14" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/drawable/transparent_background.xml" value="0.1725" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/card_book.xml" value="0.6" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/card_book.xml" value="0.25" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/card_note.xml" value="0.33" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/card_note_info.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/dialog_add_note.xml" value="0.33" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/dialog_note_info.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_add_book.xml" value="0.264" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_books.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_notes.xml" value="0.176" />
+        <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_notes.xml" value="0.25" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/fragment_settings.xml" value="0.10462962962962963" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/toolbar_add_book.xml" value="0.253125" />
         <entry key="..\:/Users/tutun/AndroidStudioProjects/book-notes-app/app/src/main/res/layout/toolbar_books.xml" value="0.2" />

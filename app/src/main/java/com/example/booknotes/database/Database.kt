@@ -3,14 +3,15 @@ package com.example.booknotes.database
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.booknotes.model.Books
-import com.example.booknotes.model.Notes
+import com.example.booknotes.model.Book
+import com.example.booknotes.model.Note
 
-@androidx.room.Database(entities = [Books::class, Notes::class], version = 1, exportSchema = false)
+@androidx.room.Database(entities = [Book::class, Note::class], version = 1, exportSchema = false)
 abstract class Database : RoomDatabase(){
 
     abstract fun notesDao() : NotesDao
     abstract fun booksDao() : BooksDao
+    abstract fun bookWithNotesDao() : BookWithNotesDao
 
     companion object {
         @Volatile
