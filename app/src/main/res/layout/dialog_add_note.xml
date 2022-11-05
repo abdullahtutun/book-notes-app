@@ -50,7 +50,7 @@
                         android:hint="Sayfa numarası"
                         android:gravity="center"
                         android:inputType="number"
-                        style="@style/edittext_hint"
+                        style="@style/EditTextHint"
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"/>
 

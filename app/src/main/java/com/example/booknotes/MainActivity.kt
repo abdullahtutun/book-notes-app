@@ -27,15 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setupWithNavController(navController)
 
-        /*var currentId = navController.currentDestination?.id
-
-        if(currentId == R.id.booksFragment){
-            binding.bottomNavigationView.visibility = View.VISIBLE
-        } else if(currentId == R.id.settingsFragment) {
-            binding.bottomNavigationView.visibility = View.VISIBLE
-        } else {
-            binding.bottomNavigationView.visibility = View.GONE
-        }*/
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.booksFragment -> binding.bottomAppBar.visibility = View.VISIBLE

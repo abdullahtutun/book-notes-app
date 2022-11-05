@@ -17,7 +17,9 @@
     <string name="book_author">Kitap Yazarı</string>
     <string name="book_genre">Kitap Türü</string>
     <string name="note_page">Bulunduğu Sayfa</string>
-    <string name="check_book">Lütfen kitap adı giriniz</string>
-    <string name="check_book_author">Lütfen kitap yazarı giriniz</string>
-    <string name="check_book_genre">Lütfen kitap türünü giriniz</string>
+    <string name="warning_book">Lütfen kitap adı giriniz</string>
+    <string name="warning_book_author">Lütfen kitap yazarı giriniz</string>
+    <string name="warning_book_genre">Lütfen kitap türünü giriniz</string>
+    <string name="warning_note">Lütfen notu giriniz</string>
+    <string name="warning_note_page_number">Lütfen sayfa numarasını giriniz</string>
 </resources>

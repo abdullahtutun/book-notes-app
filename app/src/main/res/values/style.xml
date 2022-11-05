@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="edittext_hint">
+    <style name="EditTextHint">
         <item name="android:textSize">15sp</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/black</item>
@@ -15,11 +15,15 @@
         <item name="android:drawablePadding">15dp</item>
         <item name="android:lines">1</item>
         <item name="android:maxLines">1</item>
-        
     </style>
-    
-    
-    
-    
+
+    <style name="EditTextBaseLine" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/color3</item>
+        <item name="colorControlActivated">@color/color3</item>
+        <item name="colorControlHighlight">@color/color3</item>
+
+    </style>
+
+
     
 </resources>

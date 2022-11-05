@@ -23,7 +23,15 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
         } catch (e:Exception){
             Log.e(TAG, e.message, e)
         }
+    }
 
+    fun deleteNote(id: Int){
+        try {
+            daoNotes.deleteNote(id)
+
+        } catch (e:Exception){
+            Log.e(TAG, e.message, e)
+        }
     }
 
 

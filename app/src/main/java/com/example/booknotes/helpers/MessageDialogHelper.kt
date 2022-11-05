@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.view.View
 import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,7 +14,7 @@ import com.example.booknotes.viewModel.NotesViewModel
 
 object MessageDialogHelper {
 
-    fun addNoteDialog(context: Context?, vm: NotesViewModel, bookName: String) {
+    fun addNoteDialog(context: Context?,listener: MessageDialogListener?) {
         val dialog = context?.let { Dialog(it) }
         dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
@@ -25,17 +26,19 @@ object MessageDialogHelper {
         val note = dialog?.findViewById(R.id.dialogNote) as TextView
         val pageNumber = dialog?.findViewById(R.id.dialogPageNumber) as TextView
         btnSave.setOnClickListener {
-            val note = note.text.toString()
-            val pageNumber = pageNumber.text.toString().toInt()
-            val noteObj: Note = Note(null, note, pageNumber, bookName)
-            vm.addNote(noteObj)
-            dialog?.dismiss()
+            listener?.onPositiveButtonClicked(dialog, note,pageNumber)
         }
 
         btnCancel.setOnClickListener {
+            listener?.onNegativeButtonClicked()
             dialog?.dismiss()
         }
         dialog?.show()
+    }
+
+    interface MessageDialogListener {
+        fun onPositiveButtonClicked(dialog: Dialog, note:TextView, pageNumber:TextView)
+        fun onNegativeButtonClicked()
     }
 
 }

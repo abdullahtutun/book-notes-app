@@ -216,15 +216,15 @@ class AddBookFragment : Fragment() {
 
     private fun checkFields(): Boolean{
         if (binding.editTextBook.text.toString().trim().isEmpty()){
-            Toast.makeText(requireContext(),R.string.check_book,Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),R.string.warning_book,Toast.LENGTH_SHORT).show()
             return false
         }
         if (binding.editTextAuthor.text.toString().trim().isEmpty()){
-            Toast.makeText(requireContext(),R.string.check_book_author,Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),R.string.warning_book_author,Toast.LENGTH_SHORT).show()
             return false
         }
         if (binding.editTextGenre.text.toString().trim().isEmpty()){
-            Toast.makeText(requireContext(),R.string.check_book_genre,Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),R.string.warning_book_genre,Toast.LENGTH_SHORT).show()
             return false
         }
         return true
