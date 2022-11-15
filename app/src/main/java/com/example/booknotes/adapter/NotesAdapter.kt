@@ -6,30 +6,33 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.booknotes.R
+import com.example.booknotes.databinding.CardBookBinding
 import com.example.booknotes.databinding.CardNoteBinding
 import com.example.booknotes.databinding.FragmentNotesBinding
 import com.example.booknotes.model.Note
 import com.example.booknotes.viewModel.NotesViewModel
 
-class NotesAdapter(val context: Context, var noteList: List<Note>, val bindingNotesFragment: FragmentNotesBinding) : RecyclerView.Adapter<NotesAdapter.notesViewHolder>() {
+class NotesAdapter(val context: Context, var noteList: List<Note>, private val bindingNotesFragment: FragmentNotesBinding) : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
     private var isEnable: Boolean = false
     private var itemSelectedList = mutableListOf<Int?>()
 
-    class notesViewHolder(val binding: CardNoteBinding) : RecyclerView.ViewHolder(binding.root) {
+    class NotesViewHolder(val binding: CardNoteBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): notesViewHolder {
-        return notesViewHolder(
-            CardNoteBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return NotesViewHolder(
+            DataBindingUtil.inflate<CardNoteBinding>(inflater, R.layout.card_note,parent,false)
         )
     }
 
-    override fun onBindViewHolder(holder: NotesAdapter.notesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: NotesAdapter.NotesViewHolder, position: Int) {
         val item = noteList[position]
-
-        holder.binding.note.text= item.note
+        holder.binding.note = item
 
         holder.binding.root.setOnClickListener{
             if(itemSelectedList.contains(item.id!!)){
@@ -54,7 +57,7 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, val bindingNo
 
     }
 
-    private fun selectItem(holder: NotesAdapter.notesViewHolder,itemId: Int){
+    private fun selectItem(holder: NotesAdapter.NotesViewHolder,itemId: Int){
         isEnable = true
         itemSelectedList.add(itemId!!)
         holder.binding.cardNote.setCardBackgroundColor(Color.parseColor("#dcdcdc"))

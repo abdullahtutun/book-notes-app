@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <data>
+        <variable
+            name="book"
+            type="com.example.booknotes.model.Book" />
+        
+        <variable
+            name="listener"
+            type="com.example.booknotes.adapter.BookClickListener" />
+    </data>
+    
 <androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardBook"
     android:layout_height="wrap_content"
@@ -25,7 +35,7 @@
             android:fontFamily="@font/playfair_display_regular"
             android:gravity="center"
             android:layout_marginTop="24dp"
-            android:text="@string/book_name"
+            android:text="@{book.bookName}"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/playfair_display_regular"
-            android:text="@string/book_author"
+            android:text="@{book.bookAuthor}"
             android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@+id/bookGenre"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +58,7 @@
             android:id="@+id/bookGenre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/book_genre"
+            android:text="@{book.bookGenre}"
             android:textSize="12sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -59,3 +69,5 @@
 
 
 </androidx.cardview.widget.CardView>
+
+</layout>
