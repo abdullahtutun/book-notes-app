@@ -7,7 +7,7 @@ import com.example.booknotes.model.Book
 import com.example.booknotes.model.Note
 
 @androidx.room.Database(entities = [Book::class, Note::class], version = 1, exportSchema = false)
-abstract class Database : RoomDatabase(){
+abstract class Database  : RoomDatabase(){
 
     abstract fun notesDao() : NotesDao
     abstract fun booksDao() : BooksDao
@@ -26,7 +26,7 @@ abstract class Database : RoomDatabase(){
             }
             synchronized(this)
             {
-                val roomDatabaseInstance = Room.databaseBuilder(context,Database::class.java,"Notes").allowMainThreadQueries().build()
+                val roomDatabaseInstance = Room.databaseBuilder(context.applicationContext,Database::class.java,"Notes").allowMainThreadQueries().build()
 
                 INSTANCE = roomDatabaseInstance
 

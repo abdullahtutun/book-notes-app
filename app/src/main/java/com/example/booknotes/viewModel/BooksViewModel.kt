@@ -1,14 +1,16 @@
 package com.example.booknotes.viewModel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.booknotes.database.Database
+import androidx.lifecycle.ViewModel
+import com.example.booknotes.database.BooksDao
 import com.example.booknotes.model.Book
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class BooksViewModel(application: Application) : AndroidViewModel(application) {
-    private val dao = Database.getDatabaseInstance(application).booksDao()
+@HiltViewModel
+class BooksViewModel @Inject constructor(private val dao: BooksDao) : ViewModel() {
 
     fun getBooks(): LiveData<List<Book>> = dao.getBooks()
+
 
 }

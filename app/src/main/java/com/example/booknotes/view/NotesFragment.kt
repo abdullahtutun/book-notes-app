@@ -14,13 +14,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booknotes.R
-import com.example.booknotes.adapter.BooksAdapter
 import com.example.booknotes.adapter.NotesAdapter
 import com.example.booknotes.databinding.FragmentNotesBinding
 import com.example.booknotes.helpers.MessageDialogHelper
 import com.example.booknotes.model.Note
 import com.example.booknotes.viewModel.NotesViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NotesFragment : Fragment() {
     val bookOfNotes by navArgs<NotesFragmentArgs>()
     lateinit var binding: FragmentNotesBinding

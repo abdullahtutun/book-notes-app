@@ -4,13 +4,10 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.view.View
 import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.booknotes.R
-import com.example.booknotes.model.Note
-import com.example.booknotes.viewModel.NotesViewModel
 
 object MessageDialogHelper {
 

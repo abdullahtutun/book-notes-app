@@ -1,8 +1,6 @@
 package com.example.booknotes.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.booknotes.model.Book
 import com.example.booknotes.model.Note
 
 @Dao

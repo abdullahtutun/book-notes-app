@@ -10,11 +10,12 @@ import com.example.booknotes.R
 import com.example.booknotes.adapter.BooksAdapter
 import com.example.booknotes.databinding.FragmentBooksBinding
 import com.example.booknotes.viewModel.BooksViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BooksFragment : Fragment() {
-
     lateinit var binding: FragmentBooksBinding
-    val viewModel: BooksViewModel by viewModels()
+    private val viewModel: BooksViewModel by viewModels()
     lateinit var adapter: BooksAdapter
 
     override fun onCreateView(

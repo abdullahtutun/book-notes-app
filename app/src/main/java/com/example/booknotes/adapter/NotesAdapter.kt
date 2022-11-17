@@ -2,14 +2,12 @@ package com.example.booknotes.adapter
 
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booknotes.R
-import com.example.booknotes.databinding.CardBookBinding
 import com.example.booknotes.databinding.CardNoteBinding
 import com.example.booknotes.databinding.FragmentNotesBinding
 import com.example.booknotes.model.Note

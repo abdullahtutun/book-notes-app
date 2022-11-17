@@ -13,7 +13,9 @@ import com.example.booknotes.R
 import com.example.booknotes.databinding.FragmentAddBookBinding
 import com.example.booknotes.model.Book
 import com.example.booknotes.viewModel.AddBookViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddBookFragment : Fragment() {
 
     lateinit var binding: FragmentAddBookBinding
