@@ -12,7 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/color4"
+        android:backgroundTint="@color/color1"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp">
 

@@ -46,6 +46,7 @@ class NotesFragment : Fragment() {
         binding.toolbarNotes.ivFilter.setOnClickListener(this::onFilter)
         binding.toolbarNotes.ivCopy.setOnClickListener(this::onCopy)
         binding.toolbarNotes.ivDelete.setOnClickListener(this::onDelete)
+        binding.toolbarNotes.ivCancelClicked.setOnClickListener(this::onCancel)
     }
 
     private fun initAdapter() {
@@ -59,7 +60,6 @@ class NotesFragment : Fragment() {
         viewModel.getNotes(bookOfNotes.data).observe(viewLifecycleOwner) {
             adapter = NotesAdapter(requireContext(), it[0].notes, binding)
             binding.rvNotes.adapter = adapter
-            Log.d("aaa", it.size.toString())
         }
     }
 
@@ -73,13 +73,13 @@ class NotesFragment : Fragment() {
                 if(checkFields(note, pageNumber)){
                     var noteObj = Note(null, note, pageNumber.toInt(), book)
                     viewModel.addNote(noteObj)
+                    adapter.clearSelectedList()
                     dialog?.dismiss()
                 }
             }
             override fun onNegativeButtonClicked() {
 
             }
-
         })
     }
 
@@ -108,16 +108,10 @@ class NotesFragment : Fragment() {
     }
 
     private fun onCancel(v: View){
-
+        adapter.clearSelectedList()
     }
 
     private fun onDelete(v: View){
         adapter.deleteNote(viewModel)
     }
-
-    private fun setOnClickEvents(){}
-
-
-
-
 }

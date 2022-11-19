@@ -159,11 +159,11 @@ class AddBookFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.includeBook.bookName.text = s
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-
+                binding.includeBook.bookName.text = s.toString()
             }
 
         })
@@ -174,11 +174,11 @@ class AddBookFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.includeBook.bookAuthor.text = s
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-
+                binding.includeBook.bookAuthor.text = s.toString()
             }
 
         })
@@ -189,11 +189,11 @@ class AddBookFragment : Fragment() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.includeBook.bookGenre.setText(s)
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-
+                binding.includeBook.bookGenre.text = s.toString()
             }
 
         })

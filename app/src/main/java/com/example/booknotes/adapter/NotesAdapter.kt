@@ -2,6 +2,7 @@ package com.example.booknotes.adapter
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,19 +33,26 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
         val item = noteList[position]
         holder.binding.note = item
 
+        if (itemSelectedList.isEmpty()){
+            holder.binding.cardNote.setCardBackgroundColor(Color.WHITE)
+        }
+
         holder.binding.root.setOnClickListener{
             if(itemSelectedList.contains(item.id!!)){
                 itemSelectedList.remove(item.id!!)
                 holder.binding.cardNote.setCardBackgroundColor(Color.WHITE)
+                bindingNotesFragment.toolbarNotes.tvLongClickedItemCount.text = itemSelectedList.size.toString()
                 if (itemSelectedList.isEmpty()){
-                    bindingNotesFragment.toolbarNotes.llDeleteCopy.visibility = View.GONE
+                    bindingNotesFragment.toolbarNotes.toolbarLongClicked.visibility = View.GONE
                     bindingNotesFragment.toolbarNotes.ivFilter.visibility = View.VISIBLE
                     bindingNotesFragment.toolbarNotes.ivBack.visibility = View.VISIBLE
                     isEnable = false
-
                 }
             } else if(isEnable){
                 selectItem(holder,item.id!!)
+
+            } else {
+
             }
         }
 
@@ -59,7 +67,8 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
         isEnable = true
         itemSelectedList.add(itemId!!)
         holder.binding.cardNote.setCardBackgroundColor(Color.parseColor("#dcdcdc"))
-        bindingNotesFragment.toolbarNotes.llDeleteCopy.visibility = View.VISIBLE
+        bindingNotesFragment.toolbarNotes.tvLongClickedItemCount.text = itemSelectedList.size.toString()
+        bindingNotesFragment.toolbarNotes.toolbarLongClicked.visibility = View.VISIBLE
         bindingNotesFragment.toolbarNotes.ivFilter.visibility = View.GONE
         bindingNotesFragment.toolbarNotes.ivBack.visibility = View.GONE
     }
@@ -75,12 +84,23 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
             }
             isEnable = false
             itemSelectedList.clear()
-            bindingNotesFragment.toolbarNotes.llDeleteCopy.visibility = View.GONE
+            bindingNotesFragment.toolbarNotes.toolbarLongClicked.visibility = View.GONE
             bindingNotesFragment.toolbarNotes.ivFilter.visibility = View.VISIBLE
             bindingNotesFragment.toolbarNotes.ivBack.visibility = View.VISIBLE
         }
         notifyDataSetChanged()
     }
+
+    fun clearSelectedList(){
+        isEnable = false
+        itemSelectedList.clear()
+        bindingNotesFragment.toolbarNotes.toolbarLongClicked.visibility = View.GONE
+        bindingNotesFragment.toolbarNotes.ivFilter.visibility = View.VISIBLE
+        bindingNotesFragment.toolbarNotes.ivBack.visibility = View.VISIBLE
+        notifyDataSetChanged()
+    }
+
+    fun infoDialog()
 
 
 }
