@@ -38,6 +38,13 @@ class NotesViewModel @Inject constructor(
         }
     }
 
+    fun updateNote(note: Note){
+        try {
+            daoNotes.updateNote(note)
 
+        } catch (e:Exception){
+            Log.e(TAG, e.message, e)
+        }
+    }
 
 }

@@ -10,7 +10,7 @@
         android:id="@+id/ivFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/ivSave"
+        android:layout_alignRight="@+id/ivAdd"
         android:layout_marginTop="5dp"
         android:layout_marginRight="70dp"
         android:foreground="?selectableItemBackgroundBorderless"
@@ -19,7 +19,7 @@
         app:tint="@color/black" />
 
     <ImageView
-        android:id="@+id/ivSave"
+        android:id="@+id/ivAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

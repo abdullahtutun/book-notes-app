@@ -11,7 +11,7 @@
     <string name="author_hint">Yazar</string>
     <string name="book_genre_hint">Tür</string>
     <string name="notes">Notlar</string>
-    <string name="add_note_dialog">Tamam</string>
+    <string name="okey">Tamam</string>
     <string name="cancel_add_note_dialog">Vazgeç</string>
     <string name="book_name">Kitap Adı</string>
     <string name="book_author">Kitap Yazarı</string>
@@ -22,4 +22,10 @@
     <string name="warning_book_genre">Lütfen kitap türünü giriniz</string>
     <string name="warning_note">Lütfen notu giriniz</string>
     <string name="warning_note_page_number">Lütfen sayfa numarasını giriniz</string>
+    <string name="coppied_note">Kopyalandı</string>
+    <string name="sort_by">Sırala</string>
+    <string name="filtering">Notları filtrele</string>
+    <string name="sort_by_created_date">Oluşturulma tarihi</string>
+    <string name="sort_by_page_number">Sayfa numarası</string>
+    <string name="favorited_notes">Yıldızlanmış</string>
 </resources>

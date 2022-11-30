@@ -12,7 +12,7 @@
     <string name="author_hint">Author</string>
     <string name="book_genre_hint">Genre</string>
     <string name="notes">Notes</string>
-    <string name="add_note_dialog">Okay</string>
+    <string name="okey">Okay</string>
     <string name="cancel_add_note_dialog">Give Up</string>
     <string name="book_name">Book Name</string>
     <string name="book_author">Book Author</string>
@@ -23,4 +23,10 @@
     <string name="warning_book_genre">Please enter book genre</string>
     <string name="warning_note">Please enter note</string>
     <string name="warning_note_page_number">Please enter page number</string>
+    <string name="coppied_note">Coppied</string>
+    <string name="sort_by">Sort by</string>
+    <string name="filtering">Filter notes</string>
+    <string name="sort_by_created_date">Date created</string>
+    <string name="sort_by_page_number">Page Number</string>
+    <string name="favorited_notes">Favorited</string>
 </resources>

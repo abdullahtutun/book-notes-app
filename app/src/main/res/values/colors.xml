@@ -18,5 +18,6 @@
     <color name="color5">#95E1D3</color>
     <color name="color6">#3F72AF</color>
     <color name="colorTextGray">#AEB4BE</color>
+    <color name="dark_grey">#a9a9a9</color>
 
 </resources>

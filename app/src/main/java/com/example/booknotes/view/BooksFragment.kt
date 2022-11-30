@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.booknotes.R
 import com.example.booknotes.adapter.BooksAdapter
 import com.example.booknotes.databinding.FragmentBooksBinding
+import com.example.booknotes.model.Book
 import com.example.booknotes.viewModel.BooksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +33,7 @@ class BooksFragment : Fragment() {
 
     private fun init(){
         binding.toolbarBooks.ivFilter.setOnClickListener(this::onFilter)
-        binding.toolbarBooks.ivSave.setOnClickListener(this::onSave)
+        binding.toolbarBooks.ivAdd.setOnClickListener(this::onAdd)
 
     }
 
@@ -43,19 +44,23 @@ class BooksFragment : Fragment() {
         getBooks()
     }
 
-    private fun getBooks() {
-        viewModel.getBooks().observe(viewLifecycleOwner) {
-            adapter = BooksAdapter(requireContext(), it)
-            binding.rvBooks.adapter = adapter
-        }
+    private fun onAdd(v: View){
+        Navigation.findNavController(v).navigate(R.id.action_booksFragment_to_addBookFragment)
     }
 
     private fun onFilter(v: View){
 
     }
 
-    private fun onSave(v: View){
-        Navigation.findNavController(v).navigate(R.id.action_booksFragment_to_addBookFragment)
+    private fun getBooks() {
+        viewModel.getBooks().observe(viewLifecycleOwner) {
+            it.let {
+                adapter = BooksAdapter(requireContext(), it)
+                binding.rvBooks.adapter = adapter
+            }
+        }
     }
+
+
 
 }

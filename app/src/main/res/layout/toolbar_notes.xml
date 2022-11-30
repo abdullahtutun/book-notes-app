@@ -73,11 +73,19 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/ivStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?selectableItemBackgroundBorderless"
+                android:padding="10dp"
+                android:src="@drawable/ic_star" />
+
+            <ImageView
                 android:id="@+id/ivCopy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:foreground="?selectableItemBackgroundBorderless"
-                android:padding="20dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_copy" />
 
             <ImageView
@@ -85,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:foreground="?selectableItemBackgroundBorderless"
-                android:padding="20dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_delete" />
 
         </LinearLayout>

@@ -5,10 +5,7 @@
         <variable
             name="book"
             type="com.example.booknotes.model.Book" />
-        
-        <variable
-            name="listener"
-            type="com.example.booknotes.adapter.BookClickListener" />
+
     </data>
     
 <androidx.cardview.widget.CardView

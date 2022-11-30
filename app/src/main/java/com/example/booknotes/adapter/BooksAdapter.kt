@@ -13,7 +13,7 @@ import com.example.booknotes.databinding.CardBookBinding
 import com.example.booknotes.model.Book
 import com.example.booknotes.view.BooksFragmentDirections
 
-class BooksAdapter(val context: Context, var bookList: List<Book>) : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>(), BookClickListener{
+class BooksAdapter(val context: Context, var bookList: List<Book>) : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>(){
 
     class BooksViewHolder(val binding: CardBookBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -47,10 +47,5 @@ class BooksAdapter(val context: Context, var bookList: List<Book>) : RecyclerVie
     override fun getItemCount(): Int {
         return bookList.size
     }
-
-    override fun onBookClicked(v: View) {
-
-    }
-
 
 }
