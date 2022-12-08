@@ -1,17 +1,20 @@
-package com.example.booknotes.helpers
+package com.example.booknotes.helper
 
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.booknotes.R
+import com.example.booknotes.SessionManager
 
 object DialogHelper {
 
@@ -40,7 +43,7 @@ object DialogHelper {
 
     fun showBottomSheetDialog(context: Context, listener: BottomSheetDialogListener) {
 
-        val dialog = Dialog(context)
+        val dialog = context?.let { Dialog(it) }
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.bottom_sheet_layout_notes)
 
@@ -54,7 +57,30 @@ object DialogHelper {
         val ivPageNumberUp = dialog.findViewById(R.id.ivPageNumberUp) as ImageView
         val ivDateCreatedUp = dialog.findViewById(R.id.ivDateCreatedUp) as ImageView
         val ivDateCreatedDown = dialog.findViewById(R.id.ivDateCreatedDown) as ImageView
+        val cbFavorite = dialog.findViewById(R.id.cbFavorite) as CheckBox
         val buttonOkey = dialog.findViewById(R.id.buttonOkey) as Button
+
+        if(SessionManager.noteOptions.isDateCreatedDown){
+            ivDateCreatedDown.visibility = View.VISIBLE
+            ivDateCreatedUp.visibility = View.GONE
+
+        } else {
+            ivDateCreatedDown.visibility = View.GONE
+            ivDateCreatedUp.visibility = View.VISIBLE
+        }
+
+        if(SessionManager.noteOptions.isPageNumberDown){
+            ivPageNumberDown.visibility = View.VISIBLE
+            ivPageNumberUp.visibility = View.GONE
+
+        } else {
+            ivPageNumberDown.visibility = View.GONE
+            ivPageNumberUp.visibility = View.VISIBLE
+        }
+
+        cbFavorite.isChecked = SessionManager.noteOptions.filteringFavorite
+
+        //listener.setChoicesOfUser(ivDateCreatedDown, ivDateCreatedDown, ivPageNumberDown, ivPageNumberUp, cbFavorite)
 
         llSorting.setOnClickListener{
             listener.onLlSortingClicked(llSortingOptions)
@@ -62,6 +88,10 @@ object DialogHelper {
 
         llFiltering.setOnClickListener{
             listener.onLlFilteringClicked(llFilteringOptions)
+        }
+
+        cbFavorite.setOnCheckedChangeListener { _, isChecked ->
+            listener.onCbFavoriteClicked(cbFavorite, isChecked)
         }
 
         llDateCreated.setOnClickListener {
@@ -91,8 +121,10 @@ object DialogHelper {
     }
 
     interface BottomSheetDialogListener {
+        //fun setChoicesOfUser(ivDateCreatedDown: ImageView, ivDateCreatedUp: ImageView, ivPageNumberDown: ImageView, ivPageNumberUp: ImageView, cbFavorite: CheckBox)
         fun onLlSortingClicked(llSortingOptions: LinearLayout)
         fun onLlFilteringClicked(llFilteringOptions: LinearLayout)
+        fun onCbFavoriteClicked(cbFavorite: CheckBox, isChecked: Boolean)
         fun onLlDateCreatedClicked(ivDateCreatedDown: ImageView, ivDateCreatedUp: ImageView)
         fun onLlPageNumberClicked(ivPageNumberDown: ImageView, ivPageNumberUp: ImageView)
         fun onButtonOkeyClicked(dialog: Dialog)

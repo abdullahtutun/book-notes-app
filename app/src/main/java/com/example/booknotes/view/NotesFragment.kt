@@ -2,6 +2,7 @@ package com.example.booknotes.view
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booknotes.R
+import com.example.booknotes.SessionManager
 import com.example.booknotes.adapter.NotesAdapter
 import com.example.booknotes.databinding.BottomSheetLayoutNotesBinding
 import com.example.booknotes.databinding.FragmentNotesBinding
-import com.example.booknotes.helpers.DialogHelper
+import com.example.booknotes.helper.DialogHelper
 import com.example.booknotes.model.Note
 import com.example.booknotes.viewModel.NotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -85,7 +87,7 @@ class NotesFragment : Fragment() {
     private fun getNotes() {
         viewModel.getNotes(bookOfNotes.data).observe(viewLifecycleOwner) {
             it.let {
-                adapter = NotesAdapter(requireContext(), it[0].notes, binding)
+                adapter = NotesAdapter((requireContext()), it[0].notes, binding)
                 binding.rvNotes.adapter = adapter
             }
         }
@@ -114,10 +116,12 @@ class NotesFragment : Fragment() {
     private fun showBottomSheetDialog(){
         var isOpenSortingOptions = false
         var isOpenFilteringOptions = false
-        var isSortingOptionsDown = true
-        var isFilteringOptionsDown = true
+        var isDateCreatedOptionDown = SessionManager.noteOptions.isDateCreatedDown
+        var isPageNumberOptionDown = SessionManager.noteOptions.isPageNumberDown
+        var cbFilterFavorite = SessionManager.noteOptions.filteringFavorite
 
         DialogHelper.showBottomSheetDialog(requireContext(), object : DialogHelper.BottomSheetDialogListener {
+
             override fun onLlSortingClicked(llSortingOptions: LinearLayout) {
                 if(!isOpenSortingOptions){
                     llSortingOptions.visibility = View.VISIBLE
@@ -140,33 +144,43 @@ class NotesFragment : Fragment() {
                 }
             }
 
+            override fun onCbFavoriteClicked(cbFavorite: CheckBox, isChecked: Boolean) {
+                cbFilterFavorite = isChecked
+            }
+
             override fun onLlDateCreatedClicked(ivDateCreatedDown: ImageView, ivDateCreatedUp: ImageView) {
-                if(isSortingOptionsDown){
+                if(isDateCreatedOptionDown){
                     ivDateCreatedDown.visibility = View.GONE
                     ivDateCreatedUp.visibility = View.VISIBLE
-                    isSortingOptionsDown = false
+                    isDateCreatedOptionDown = false
 
                 } else {
                     ivDateCreatedDown.visibility = View.VISIBLE
                     ivDateCreatedUp.visibility = View.GONE
-                    isSortingOptionsDown = true
+                    isDateCreatedOptionDown = true
                 }
             }
 
             override fun onLlPageNumberClicked(ivPageNumberDown: ImageView, ivPageNumberUp: ImageView) {
-                if(isFilteringOptionsDown){
+                if(isPageNumberOptionDown){
                     ivPageNumberDown.visibility = View.GONE
                     ivPageNumberUp.visibility = View.VISIBLE
-                    isFilteringOptionsDown = false
+                    isPageNumberOptionDown = false
 
                 } else {
                     ivPageNumberDown.visibility = View.VISIBLE
                     ivPageNumberUp.visibility = View.GONE
-                    isFilteringOptionsDown = true
+                    isPageNumberOptionDown = true
                 }
             }
 
             override fun onButtonOkeyClicked(dialog: Dialog) {
+                Log.d("aaaa",isDateCreatedOptionDown.toString() + isPageNumberOptionDown.toString() + cbFilterFavorite)
+                SessionManager.noteOptions.isDateCreatedDown = isDateCreatedOptionDown
+                SessionManager.noteOptions.isPageNumberDown = isPageNumberOptionDown
+                SessionManager.noteOptions.filteringFavorite = cbFilterFavorite
+                SessionManager.saveNoteOptionsToSharedPreferences()
+
                 dialog.dismiss()
             }
 
@@ -175,11 +189,11 @@ class NotesFragment : Fragment() {
 
     private fun checkFields(note: String, pageNumber: String): Boolean{
         if(note.isNullOrBlank()){
-            Toast.makeText(requireContext(),R.string.warning_note, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.warning_note, Toast.LENGTH_SHORT).show()
             return false
         }
         if(pageNumber.isNullOrEmpty()){
-            Toast.makeText(requireContext(),R.string.warning_note_page_number, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.warning_note_page_number, Toast.LENGTH_SHORT).show()
             return false
         }
         return true
