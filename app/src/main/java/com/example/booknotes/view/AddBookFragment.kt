@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AddBookFragment : Fragment() {
 
-    lateinit var binding: FragmentAddBookBinding
+    private lateinit var binding: FragmentAddBookBinding
     private val viewModel: AddBookViewModel by viewModels()
 
     override fun onCreateView(
