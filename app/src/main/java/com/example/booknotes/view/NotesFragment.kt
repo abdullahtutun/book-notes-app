@@ -1,6 +1,7 @@
 package com.example.booknotes.view
 
 import android.app.Dialog
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.booknotes.Constant
 import com.example.booknotes.Constant.SHARED_KEY_ACTIVE_SORTING
 import com.example.booknotes.R
 import com.example.booknotes.SessionManager
@@ -19,19 +21,25 @@ import com.example.booknotes.adapter.NotesAdapter
 import com.example.booknotes.databinding.BottomSheetLayoutNotesBinding
 import com.example.booknotes.databinding.FragmentNotesBinding
 import com.example.booknotes.helper.DialogHelper
+import com.example.booknotes.helper.SharedPreferencesHelper
 import com.example.booknotes.model.Note
 import com.example.booknotes.viewModel.NotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class NotesFragment : Fragment() {
+    @Inject
+    lateinit var sessionManager: SessionManager
+    @Inject
+    lateinit var sharedPreferencesHelper: SharedPreferencesHelper
+
     private val bookOfNotes by navArgs<NotesFragmentArgs>()
-    lateinit var binding: FragmentNotesBinding
-    val viewModel: NotesViewModel by viewModels()
-    lateinit var adapter: NotesAdapter
+    private lateinit var binding: FragmentNotesBinding
+    private val viewModel: NotesViewModel by viewModels()
+    private lateinit var adapter: NotesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +47,7 @@ class NotesFragment : Fragment() {
     ): View? {
         binding = FragmentNotesBinding.inflate(layoutInflater, container,false)
 
+        sessionManager.getNoteOptionsFromSharedPreferences()
         init()
         initAdapter()
 
@@ -63,11 +72,12 @@ class NotesFragment : Fragment() {
     }
 
     private fun getNotes() {
-        var noteList: List<Note>
+        val noteList: List<Note>
 
-        if(SessionManager.noteSortingOptions.filteringFavorite) {
-            var list = getNotesByIsFavorite(true)
-            noteList = if(SessionManager.sharedPreferencesHelper!!.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 0){
+        if(sessionManager.noteSortingOptions.filteringFavorite) {
+            val list = getNotesByIsFavorite(true)
+
+            noteList = if(sharedPreferencesHelper.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 0){
                 getNotesByDateCreated(list)
 
             } else {
@@ -75,8 +85,9 @@ class NotesFragment : Fragment() {
             }
 
         } else {
-            var list = getNotesByIsFavorite(false)
-            noteList = if(SessionManager.sharedPreferencesHelper!!.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 0){
+            val list = getNotesByIsFavorite(false)
+
+            noteList = if(sharedPreferencesHelper.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 0){
                 getNotesByDateCreated(list)
 
             } else {
@@ -120,16 +131,16 @@ class NotesFragment : Fragment() {
 
         DialogHelper.addNoteDialog(requireContext(), object : DialogHelper.MessageDialogListener {
             override fun onPositiveButtonClicked(dialog:Dialog, note: TextView, pageNumber: TextView) {
-                var note = note.text.toString()
-                var pageNumber = pageNumber.text.toString()
-                var book = bookOfNotes.data
+                val note = note.text.toString()
+                val pageNumber = pageNumber.text.toString()
+                val book = bookOfNotes.data
 
                 if(checkFields(note, pageNumber)){
-                    var noteObj = Note(null, note, pageNumber.toInt(), book, 0, date)
+                    val noteObj = Note(null, note, pageNumber.toInt(), book, 0, date)
                     viewModel.addNote(noteObj)
                     getNotes()
                     adapter.clearSelectedList()
-                    dialog?.dismiss()
+                    dialog.dismiss()
                 }
             }
             override fun onNegativeButtonClicked() {
@@ -141,9 +152,9 @@ class NotesFragment : Fragment() {
     private fun showBottomSheetDialog() {
         var isOpenSortingOptions = false
         var isOpenFilteringOptions = false
-        var isDateCreatedOptionDown = SessionManager.noteSortingOptions.isDateCreatedDown
-        var isPageNumberOptionDown = SessionManager.noteSortingOptions.isPageNumberDown
-        var cbFilterFavorite = SessionManager.noteSortingOptions.filteringFavorite
+        var isDateCreatedOptionDown = sessionManager.noteSortingOptions.isDateCreatedDown
+        var isPageNumberOptionDown = sessionManager.noteSortingOptions.isPageNumberDown
+        var cbFilterFavorite = sessionManager.noteSortingOptions.filteringFavorite
 
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -160,37 +171,41 @@ class NotesFragment : Fragment() {
         val cbFavorite = dialog.findViewById(R.id.cbFavorite) as CheckBox
         val buttonOk = dialog.findViewById(R.id.buttonOkey) as Button
 
-        if(SessionManager.noteSortingOptions.isDateCreatedDown){
-            if(SessionManager.sharedPreferencesHelper!!.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 0){
+        Log.d("abdullah", sharedPreferencesHelper.getBoolean(Constant.SHARED_KEY_DATE_CREATED, true).toString())
+        Log.d("abdullah", sharedPreferencesHelper.getBoolean(Constant.SHARED_KEY_PAGE_NUMBER, true).toString())
+        Log.d("abdullah", sharedPreferencesHelper.getBoolean(Constant.SHARED_KEY_FILTERING_FAVORITE, false).toString())
+
+        if(sessionManager.noteSortingOptions.isDateCreatedDown){
+            if(sharedPreferencesHelper.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 0){
                 ivDateCreated.setImageResource(R.drawable.ic_sort_down_black)
             } else {
                 ivDateCreated.setImageResource(R.drawable.ic_sort_down)
             }
 
         } else {
-            if(SessionManager.sharedPreferencesHelper!!.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 0){
+            if(sharedPreferencesHelper.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 0){
                 ivDateCreated.setImageResource(R.drawable.ic_sort_up_black)
             } else {
                 ivDateCreated.setImageResource(R.drawable.ic_sort_up)
             }
         }
 
-        if(SessionManager.noteSortingOptions.isPageNumberDown){
-            if(SessionManager.sharedPreferencesHelper!!.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 1){
+        if(sessionManager.noteSortingOptions.isPageNumberDown){
+            if(sharedPreferencesHelper.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 1){
                 ivPageNumber.setImageResource(R.drawable.ic_sort_down_black)
             } else {
                 ivPageNumber.setImageResource(R.drawable.ic_sort_down)
             }
 
         } else {
-            if(SessionManager.sharedPreferencesHelper!!.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 1){
+            if(sharedPreferencesHelper.getInt(SHARED_KEY_ACTIVE_SORTING, 0) == 1){
                 ivPageNumber.setImageResource(R.drawable.ic_sort_up_black)
             } else {
                 ivPageNumber.setImageResource(R.drawable.ic_sort_up)
             }
         }
 
-        cbFavorite.isChecked = SessionManager.noteSortingOptions.filteringFavorite
+        cbFavorite.isChecked = sessionManager.noteSortingOptions.filteringFavorite
 
         llSorting.setOnClickListener{
             if(!isOpenSortingOptions){
@@ -234,7 +249,7 @@ class NotesFragment : Fragment() {
             } else {
                 ivPageNumber.setImageResource(R.drawable.ic_sort_up)
             }
-            SessionManager.sharedPreferencesHelper!!.putInt(SHARED_KEY_ACTIVE_SORTING, 0)
+            sharedPreferencesHelper.putInt(SHARED_KEY_ACTIVE_SORTING, 0)
         }
 
         llPageNumber.setOnClickListener {
@@ -252,14 +267,14 @@ class NotesFragment : Fragment() {
             } else {
                 ivDateCreated.setImageResource(R.drawable.ic_sort_up)
             }
-            SessionManager.sharedPreferencesHelper!!.putInt(SHARED_KEY_ACTIVE_SORTING, 1)
+            sharedPreferencesHelper.putInt(SHARED_KEY_ACTIVE_SORTING, 1)
         }
 
         buttonOk.setOnClickListener {
-            SessionManager.noteSortingOptions.isDateCreatedDown = isDateCreatedOptionDown
-            SessionManager.noteSortingOptions.isPageNumberDown = isPageNumberOptionDown
-            SessionManager.noteSortingOptions.filteringFavorite = cbFilterFavorite
-            SessionManager.saveNoteOptionsToSharedPreferences()
+            sessionManager.noteSortingOptions.isDateCreatedDown = isDateCreatedOptionDown
+            sessionManager.noteSortingOptions.isPageNumberDown = isPageNumberOptionDown
+            sessionManager.noteSortingOptions.filteringFavorite = cbFilterFavorite
+            sessionManager.saveNoteOptionsToSharedPreferences()
 
             getNotes()
 
@@ -274,11 +289,11 @@ class NotesFragment : Fragment() {
     }
 
     private fun checkFields(note: String, pageNumber: String): Boolean{
-        if(note.isNullOrBlank()){
+        if(note.isBlank()){
             Toast.makeText(requireContext(), R.string.warning_note, Toast.LENGTH_SHORT).show()
             return false
         }
-        if(pageNumber.isNullOrEmpty()){
+        if(pageNumber.isEmpty()){
             Toast.makeText(requireContext(), R.string.warning_note_page_number, Toast.LENGTH_SHORT).show()
             return false
         }
@@ -297,7 +312,7 @@ class NotesFragment : Fragment() {
     }
 
     private fun getNotesByDateCreated(list: List<Note>): List<Note> {
-        return if(SessionManager.noteSortingOptions.isDateCreatedDown){
+        return if(sessionManager.noteSortingOptions.isDateCreatedDown){
             list.sortedByDescending { it.createdDate }
 
         } else {
@@ -306,7 +321,7 @@ class NotesFragment : Fragment() {
     }
 
     private fun getNotesByPageNo(list: List<Note>) : List<Note>{
-        return if(SessionManager.noteSortingOptions.isPageNumberDown){
+        return if(sessionManager.noteSortingOptions.isPageNumberDown){
             list.sortedByDescending { it.pageNo }
 
         } else {
