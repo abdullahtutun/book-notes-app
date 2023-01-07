@@ -1,21 +1,21 @@
 package com.example.booknotes
 
 import com.example.booknotes.helper.SharedPreferencesHelper
-import com.example.booknotes.model.NoteOptions
+import com.example.booknotes.model.NoteSortingOptions
 
 object SessionManager {
     var sharedPreferencesHelper: SharedPreferencesHelper? = null
-    var noteOptions: NoteOptions = NoteOptions()
+    var noteSortingOptions: NoteSortingOptions = NoteSortingOptions()
 
     fun saveNoteOptionsToSharedPreferences() {
-        sharedPreferencesHelper!!.putBoolean(Constant.SHARED_KEY_DATE_CREATED, noteOptions.isDateCreatedDown)
-        sharedPreferencesHelper!!.putBoolean(Constant.SHARED_KEY_PAGE_NUMBER, noteOptions.isPageNumberDown)
-        sharedPreferencesHelper!!.putBoolean(Constant.SHARED_KEY_FILTERING_FAVORITE, noteOptions.filteringFavorite)
+        sharedPreferencesHelper!!.putBoolean(Constant.SHARED_KEY_DATE_CREATED, noteSortingOptions.isDateCreatedDown)
+        sharedPreferencesHelper!!.putBoolean(Constant.SHARED_KEY_PAGE_NUMBER, noteSortingOptions.isPageNumberDown)
+        sharedPreferencesHelper!!.putBoolean(Constant.SHARED_KEY_FILTERING_FAVORITE, noteSortingOptions.filteringFavorite)
     }
 
     fun getNoteOptionsFromSharedPreferences() {
-        noteOptions.isDateCreatedDown = sharedPreferencesHelper!!.getBoolean(Constant.SHARED_KEY_DATE_CREATED, true)
-        noteOptions.isPageNumberDown = sharedPreferencesHelper!!.getBoolean(Constant.SHARED_KEY_PAGE_NUMBER, true)
-        noteOptions.filteringFavorite = sharedPreferencesHelper!!.getBoolean(Constant.SHARED_KEY_FILTERING_FAVORITE, false)
+        noteSortingOptions.isDateCreatedDown = sharedPreferencesHelper!!.getBoolean(Constant.SHARED_KEY_DATE_CREATED, true)
+        noteSortingOptions.isPageNumberDown = sharedPreferencesHelper!!.getBoolean(Constant.SHARED_KEY_PAGE_NUMBER, true)
+        noteSortingOptions.filteringFavorite = sharedPreferencesHelper!!.getBoolean(Constant.SHARED_KEY_FILTERING_FAVORITE, false)
     }
 }

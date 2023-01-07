@@ -1,7 +1,6 @@
 package com.example.booknotes.di
 
 import android.content.Context
-import com.example.booknotes.database.BookWithNotesDao
 import com.example.booknotes.database.BooksDao
 import com.example.booknotes.database.Database
 import com.example.booknotes.database.NotesDao
@@ -32,12 +31,4 @@ object DaoModule {
     fun provideBooksDao(db: Database): BooksDao{
         return db.booksDao()
     }
-
-    @Singleton
-    @Provides
-    fun provideBookWithNotesDao(db: Database): BookWithNotesDao{
-        return db.bookWithNotesDao()
-    }
-
-
 }

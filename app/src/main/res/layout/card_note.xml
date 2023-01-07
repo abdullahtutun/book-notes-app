@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@{note.note}"
-            android:maxLines="3"
+            android:maxLines="5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -49,7 +49,7 @@
             android:id="@+id/ivNoteStar"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:visibility="@{note.isStarred ? View.VISIBLE : View.GONE}"
+            android:visibility="@{note.isFavorite == 1 ? View.VISIBLE : View.GONE}"
             android:src="@drawable/ic_starred"
             app:layout_constraintTop_toBottomOf="@id/tvPageNo"
             app:layout_constraintEnd_toEndOf="parent"/>

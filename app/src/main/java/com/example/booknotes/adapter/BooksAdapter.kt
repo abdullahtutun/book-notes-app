@@ -13,7 +13,7 @@ import com.example.booknotes.databinding.CardBookBinding
 import com.example.booknotes.model.Book
 import com.example.booknotes.view.BooksFragmentDirections
 
-class BooksAdapter(val context: Context, var bookList: List<Book>) : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>(){
+class BooksAdapter(var bookList: List<Book>) : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>(){
 
     class BooksViewHolder(val binding: CardBookBinding) : RecyclerView.ViewHolder(binding.root) {
 

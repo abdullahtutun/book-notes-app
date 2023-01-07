@@ -1,14 +1,11 @@
 package com.example.booknotes.adapter
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booknotes.R
@@ -85,7 +82,7 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
         }
     }
 
-    private fun selectItem(holder: NotesAdapter.NotesViewHolder,item: Note){
+    private fun selectItem(holder: NotesAdapter.NotesViewHolder, item: Note){
         isEnable = true
         itemSelectedList.add(item!!)
         holder.binding.cardNote.setCardBackgroundColor(Color.parseColor("#dcdcdc"))
@@ -96,12 +93,12 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
     fun setStarOfNote(vm: NotesViewModel){
         if(itemSelectedList.isNotEmpty()) {
             itemSelectedList.forEach {
-                if (it!!.isStarred == false){
-                    var note = Note(it!!.id, it.note, it.pageNo, it.bookName,true)
+                if (it!!.isFavorite == 0){
+                    var note = Note(it!!.id, it.note, it.pageNo, it.bookName,1, it.createdDate)
                     vm.updateNote(note)
 
                 } else{
-                    var note = Note(it!!.id, it.note, it.pageNo, it.bookName,false)
+                    var note = Note(it!!.id, it.note, it.pageNo, it.bookName,0, it.createdDate)
                     vm.updateNote(note)
                 }
                 myHolder.binding.ivNoteStar.visibility = View.VISIBLE
@@ -154,6 +151,7 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
             bindingNotesFragment.toolbarNotes.ivCopy.visibility = View.GONE
         }
     }
+
 
 
 }

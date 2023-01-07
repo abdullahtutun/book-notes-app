@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.booknotes.R
 import com.example.booknotes.adapter.BooksAdapter
 import com.example.booknotes.databinding.FragmentBooksBinding
-import com.example.booknotes.model.Book
 import com.example.booknotes.viewModel.BooksViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -55,7 +54,7 @@ class BooksFragment : Fragment() {
     private fun getBooks() {
         viewModel.getBooks().observe(viewLifecycleOwner) {
             it.let {
-                adapter = BooksAdapter(requireContext(), it)
+                adapter = BooksAdapter(it)
                 binding.rvBooks.adapter = adapter
             }
         }

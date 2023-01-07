@@ -13,5 +13,6 @@ data class Note(
     var note: String?,
     var pageNo: Int?,
     var bookName: String?,
-    var isStarred: Boolean?
+    var isFavorite: Int?,
+    var createdDate: String?
 ): Parcelable
