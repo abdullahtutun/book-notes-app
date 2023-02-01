@@ -9,11 +9,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AddBookViewModel @Inject constructor() : ViewModel() {
+class AddBookViewModel @Inject constructor(private val dao: BooksDao): ViewModel() {
     private val TAG = "AddBookViewModel"
     var bookColor: MutableLiveData<String> = MutableLiveData<String>("#ffe5b4")
-    @Inject
-    lateinit var dao: BooksDao
 
     fun addBook(book: Book) {
         try {
@@ -22,7 +20,5 @@ class AddBookViewModel @Inject constructor() : ViewModel() {
         } catch (e:Exception){
             Log.e(TAG, e.message, e)
         }
-
     }
-
 }

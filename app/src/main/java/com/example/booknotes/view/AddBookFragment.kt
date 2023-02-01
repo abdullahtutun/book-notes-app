@@ -13,6 +13,7 @@ import com.example.booknotes.R
 import com.example.booknotes.databinding.FragmentAddBookBinding
 import com.example.booknotes.model.Book
 import com.example.booknotes.viewModel.AddBookViewModel
+import com.nvt.color.ColorPickerDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,6 +43,7 @@ class AddBookFragment : Fragment() {
         binding.color4.setOnClickListener(this::onColor4)
         binding.color5.setOnClickListener(this::onColor5)
         binding.color6.setOnClickListener(this::onColor6)
+        binding.scpBtn.setOnClickListener(this::onColor7)
 
         setBookColor()
         setBookText()
@@ -105,6 +107,23 @@ class AddBookFragment : Fragment() {
         binding.color5.setImageResource(0)
         binding.color1.setImageResource(0)
         viewModel.bookColor.value = "#3F72AF"
+    }
+
+    private fun onColor7(v: View){
+        val colorPicker = ColorPickerDialog(
+            context,
+            Color.BLACK, // color init
+            true, // true is show alpha
+            object : ColorPickerDialog.OnColorPickerListener {
+                override fun onCancel(dialog: ColorPickerDialog?) {
+                    // handle click button Cancel
+                }
+
+                override fun onOk(dialog: ColorPickerDialog?, colorPicker: Int) {
+                    // handle click button OK
+                }
+            })
+        colorPicker.show()
     }
 
     private fun setBookColor() {

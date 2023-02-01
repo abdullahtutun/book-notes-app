@@ -15,8 +15,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DaoModule {
 
-    @Provides
     @Singleton
+    @Provides
     fun provideAppDatabase(@ApplicationContext appContext: Context): Database {
         return Database.getDatabaseInstance(appContext)
     }

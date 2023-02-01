@@ -12,8 +12,7 @@ import com.example.booknotes.R
 object DialogHelper {
 
     fun addNoteDialog(context: Context,listener: MessageDialogListener?) {
-
-        val dialog = context.let { Dialog(it) }
+        val dialog = Dialog(context)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(false)

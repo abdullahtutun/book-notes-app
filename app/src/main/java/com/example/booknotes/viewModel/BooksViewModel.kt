@@ -9,6 +9,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BooksViewModel @Inject constructor(private val dao: BooksDao) : ViewModel() {
+    private val TAG = "BooksViewModel"
 
     fun getBooks(): LiveData<List<Book>> = dao.getBooks()
 

@@ -1,6 +1,6 @@
-package com.example.booknotes
+package com.example.booknotes.helper
 
-import com.example.booknotes.helper.SharedPreferencesHelper
+import com.example.booknotes.Constant
 import com.example.booknotes.model.NoteSortingOptions
 import javax.inject.Inject
 

@@ -1,7 +1,6 @@
 package com.example.booknotes.view
 
 import android.app.Dialog
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -16,9 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booknotes.Constant
 import com.example.booknotes.Constant.SHARED_KEY_ACTIVE_SORTING
 import com.example.booknotes.R
-import com.example.booknotes.SessionManager
+import com.example.booknotes.helper.SessionManager
 import com.example.booknotes.adapter.NotesAdapter
-import com.example.booknotes.databinding.BottomSheetLayoutNotesBinding
 import com.example.booknotes.databinding.FragmentNotesBinding
 import com.example.booknotes.helper.DialogHelper
 import com.example.booknotes.helper.SharedPreferencesHelper

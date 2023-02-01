@@ -10,9 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class NotesViewModel @Inject constructor(
-    private val daoNotes: NotesDao,
-) : ViewModel() {
+class NotesViewModel @Inject constructor(private val daoNotes: NotesDao): ViewModel() {
 
     private val TAG = "NotesViewModel"
 
