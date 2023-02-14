@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="top"
-            android:background="@color/color1"
+            android:background="@color/creamy"
             android:padding="3dp"
             android:text="@{note.pageNo.toString()}"
             app:layout_constraintEnd_toEndOf="parent"

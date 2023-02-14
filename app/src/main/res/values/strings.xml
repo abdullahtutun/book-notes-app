@@ -12,7 +12,7 @@
     <string name="book_genre_hint">Tür</string>
     <string name="notes">Notlar</string>
     <string name="okey">Tamam</string>
-    <string name="cancel_add_note_dialog">Vazgeç</string>
+    <string name="cancel">Vazgeç</string>
     <string name="book_name">Kitap Adı</string>
     <string name="book_author">Kitap Yazarı</string>
     <string name="book_genre">Kitap Türü</string>
@@ -28,4 +28,5 @@
     <string name="sort_by_created_date">Oluşturulma tarihi</string>
     <string name="sort_by_page_number">Sayfa numarası</string>
     <string name="favorited_notes">Yıldızlanmış</string>
+    <string name="choose">Seç</string>
 </resources>

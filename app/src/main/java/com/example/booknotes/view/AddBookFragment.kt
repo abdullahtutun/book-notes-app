@@ -4,7 +4,9 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,8 +15,9 @@ import com.example.booknotes.R
 import com.example.booknotes.databinding.FragmentAddBookBinding
 import com.example.booknotes.model.Book
 import com.example.booknotes.viewModel.AddBookViewModel
-import com.nvt.color.ColorPickerDialog
 import dagger.hilt.android.AndroidEntryPoint
+import top.defaults.colorpicker.ColorPickerPopup
+import kotlin.math.sqrt
 
 @AndroidEntryPoint
 class AddBookFragment : Fragment() {
@@ -33,142 +36,69 @@ class AddBookFragment : Fragment() {
 
         return binding.root
     }
-
+    
     private fun init(){
         binding.toolbarAddBook.ivExit.setOnClickListener(this::onExit)
         binding.toolbarAddBook.ivSave.setOnClickListener(this::onSave)
-        binding.color1.setOnClickListener(this::onColor1)
-        binding.color2.setOnClickListener(this::onColor2)
-        binding.color3.setOnClickListener(this::onColor3)
-        binding.color4.setOnClickListener(this::onColor4)
-        binding.color5.setOnClickListener(this::onColor5)
-        binding.color6.setOnClickListener(this::onColor6)
-        binding.scpBtn.setOnClickListener(this::onColor7)
+        binding.btnColorPalette.setOnClickListener(this::onBtnColorPalette)
 
         setBookColor()
         setBookText()
     }
 
-    private fun onColor1(v: View){
-        binding.color1.setImageResource(R.drawable.ic_done)
-        binding.color2.setImageResource(0)
-        binding.color3.setImageResource(0)
-        binding.color4.setImageResource(0)
-        binding.color5.setImageResource(0)
-        binding.color6.setImageResource(0)
-        viewModel.bookColor.value = "#ffe5b4"
-    }
-
-    private fun onColor2(v: View){
-        binding.color2.setImageResource(R.drawable.ic_done)
-        binding.color1.setImageResource(0)
-        binding.color3.setImageResource(0)
-        binding.color4.setImageResource(0)
-        binding.color5.setImageResource(0)
-        binding.color6.setImageResource(0)
-        viewModel.bookColor.value = "#F38181"
-    }
-
-    private fun onColor3(v: View){
-        binding.color3.setImageResource(R.drawable.ic_done)
-        binding.color2.setImageResource(0)
-        binding.color1.setImageResource(0)
-        binding.color4.setImageResource(0)
-        binding.color5.setImageResource(0)
-        binding.color6.setImageResource(0)
-        viewModel.bookColor.value = "#393E46"
-    }
-
-    private fun onColor4(v: View){
-        binding.color4.setImageResource(R.drawable.ic_done)
-        binding.color2.setImageResource(0)
-        binding.color3.setImageResource(0)
-        binding.color1.setImageResource(0)
-        binding.color5.setImageResource(0)
-        binding.color6.setImageResource(0)
-        viewModel.bookColor.value = "#EAFFD0"
-    }
-
-    private fun onColor5(v: View){
-        binding.color5.setImageResource(R.drawable.ic_done)
-        binding.color2.setImageResource(0)
-        binding.color3.setImageResource(0)
-        binding.color4.setImageResource(0)
-        binding.color1.setImageResource(0)
-        binding.color6.setImageResource(0)
-        viewModel.bookColor.value = "#95E1D3"
-    }
-
-    private fun onColor6(v: View){
-        binding.color6.setImageResource(R.drawable.ic_done)
-        binding.color2.setImageResource(0)
-        binding.color3.setImageResource(0)
-        binding.color4.setImageResource(0)
-        binding.color5.setImageResource(0)
-        binding.color1.setImageResource(0)
-        viewModel.bookColor.value = "#3F72AF"
-    }
-
-    private fun onColor7(v: View){
-        val colorPicker = ColorPickerDialog(
-            context,
-            Color.BLACK, // color init
-            true, // true is show alpha
-            object : ColorPickerDialog.OnColorPickerListener {
-                override fun onCancel(dialog: ColorPickerDialog?) {
-                    // handle click button Cancel
+    private fun onBtnColorPalette(v: View){
+        ColorPickerPopup.Builder(activity)
+            .initialColor(Color.parseColor("#ffe5b4"))
+            .enableBrightness(true)
+            .enableAlpha(true)
+            .okTitle(getString(R.string.choose))
+            .cancelTitle(getString(R.string.cancel))
+            .showIndicator(true)
+            .showValue(false)
+            .build()
+            .show(v, object : ColorPickerPopup.ColorPickerObserver {
+                override fun onColor(color: Int, fromUser: Boolean) {
+                    viewModel.bookColor.value = color
                 }
 
-                override fun onOk(dialog: ColorPickerDialog?, colorPicker: Int) {
-                    // handle click button OK
+                override fun onColorPicked(color: Int) {
+                    viewModel.bookColor.value = color
                 }
+
             })
-        colorPicker.show()
     }
 
     private fun setBookColor() {
         viewModel.bookColor.observe(viewLifecycleOwner) {
-            when (it) {
-                "#ffe5b4" -> {
-                    binding.includeBook.clCard.setBackgroundColor(Color.parseColor("#ffe5b4"))
-                    binding.includeBook.bookName.setTextColor(Color.BLACK)
-                    binding.includeBook.bookAuthor.setTextColor(Color.BLACK)
-                    binding.includeBook.bookGenre.setTextColor(Color.BLACK)
-                }
-                "#F38181" -> {
-                    binding.includeBook.clCard.setBackgroundColor(Color.parseColor("#F38181"))
-                    binding.includeBook.bookName.setTextColor(Color.BLACK)
-                    binding.includeBook.bookAuthor.setTextColor(Color.BLACK)
-                    binding.includeBook.bookGenre.setTextColor(Color.BLACK)
-                }
-                "#393E46" -> {
-                    binding.includeBook.clCard.setBackgroundColor(Color.parseColor("#393E46"))
-                    binding.includeBook.bookName.setTextColor(Color.WHITE)
-                    binding.includeBook.bookAuthor.setTextColor(Color.WHITE)
-                    binding.includeBook.bookGenre.setTextColor(Color.WHITE)
+            binding.includeBook.clCard.setBackgroundColor(it)
 
-                }
-                "#EAFFD0" -> {
-                    binding.includeBook.clCard.setBackgroundColor(Color.parseColor("#EAFFD0"))
-                    binding.includeBook.bookName.setTextColor(Color.BLACK)
-                    binding.includeBook.bookAuthor.setTextColor(Color.BLACK)
-                    binding.includeBook.bookGenre.setTextColor(Color.BLACK)
-                }
-                "#95E1D3" -> {
-                    binding.includeBook.clCard.setBackgroundColor(Color.parseColor("#95E1D3"))
-                    binding.includeBook.bookName.setTextColor(Color.BLACK)
-                    binding.includeBook.bookAuthor.setTextColor(Color.BLACK)
-                    binding.includeBook.bookGenre.setTextColor(Color.BLACK)
-                }
-                "#3F72AF" -> {
-                    binding.includeBook.clCard.setBackgroundColor(Color.parseColor("#3F72AF"))
-                    binding.includeBook.bookName.setTextColor(Color.BLACK)
-                    binding.includeBook.bookAuthor.setTextColor(Color.BLACK)
-                    binding.includeBook.bookGenre.setTextColor(Color.BLACK)
-                }
+            if(isBrightColor(it)) {
+                binding.includeBook.bookName.setTextColor(Color.BLACK)
+                binding.includeBook.bookAuthor.setTextColor(Color.BLACK)
+                binding.includeBook.bookGenre.setTextColor(Color.BLACK)
+            } else {
+                binding.includeBook.bookName.setTextColor(Color.WHITE)
+                binding.includeBook.bookAuthor.setTextColor(Color.WHITE)
+                binding.includeBook.bookGenre.setTextColor(Color.WHITE)
             }
         }
 
+    }
+
+    private fun isBrightColor(color: Int): Boolean {
+        if (android.R.color.transparent == color) return true
+        var rtnValue = false
+        val rgb = intArrayOf(Color.red(color), Color.green(color), Color.blue(color))
+        val brightness = sqrt(
+            rgb[0] * rgb[0] * .241 + (rgb[1]
+                    * rgb[1] * .691) + rgb[2] * rgb[2] * .068
+        ).toInt()
+
+        // color is light
+        if (brightness >= 200) {
+            rtnValue = true
+        }
+        return rtnValue
     }
 
     private fun setBookText() {

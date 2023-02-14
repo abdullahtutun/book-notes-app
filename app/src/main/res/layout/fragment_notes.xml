@@ -33,7 +33,7 @@
         android:src="@drawable/ic_add"
         app:fabSize="normal"
         app:borderWidth="0dp"
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/creamy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

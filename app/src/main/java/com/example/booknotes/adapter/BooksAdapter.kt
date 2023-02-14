@@ -27,13 +27,8 @@ class BooksAdapter(var bookList: List<Book>) : RecyclerView.Adapter<BooksAdapter
     override fun onBindViewHolder(holder: BooksAdapter.BooksViewHolder, position: Int) {
         val data = bookList[position]
         holder.binding.book = data
-        if(data.bookColor == "#393E46"){
-            holder.binding.bookName.setTextColor(Color.parseColor("#FFFFFF"))
-            holder.binding.bookAuthor.setTextColor(Color.parseColor("#FFFFFF"))
-            holder.binding.bookGenre.setTextColor(Color.parseColor("#FFFFFF"))
-        }
 
-        holder.binding.clCard.setBackgroundColor(Color.parseColor(data.bookColor!!))
+        holder.binding.clCard.setBackgroundColor(data.bookColor!!)
 
         holder.binding.root.setOnClickListener{
             val action = BooksFragmentDirections.actionBooksFragmentToNotesFragment(data.bookName!!)

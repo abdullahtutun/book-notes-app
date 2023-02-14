@@ -13,6 +13,6 @@ data class Book(
     var bookName: String?,
     var bookAuthor: String?,
     var bookGenre: String?,
-    var bookColor: String?,
+    var bookColor: Int?,
     var noteCount: Int?,
 ): Parcelable

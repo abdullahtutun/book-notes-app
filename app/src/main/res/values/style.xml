@@ -4,7 +4,7 @@
         <item name="android:textSize">15sp</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textColorHint">@color/colorTextGray</item>
+        <item name="android:textColorHint">@color/gray</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textStyle">normal</item>
@@ -18,9 +18,9 @@
     </style>
 
     <style name="EditTextBaseLine" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorControlNormal">@color/color3</item>
-        <item name="colorControlActivated">@color/color3</item>
-        <item name="colorControlHighlight">@color/color3</item>
+        <item name="colorControlNormal">@color/light_black</item>
+        <item name="colorControlActivated">@color/light_black</item>
+        <item name="colorControlHighlight">@color/light_black</item>
 
     </style>
 
