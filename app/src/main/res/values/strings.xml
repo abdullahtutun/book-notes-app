@@ -5,6 +5,7 @@
     <string name="bottom_item_options">Seçenekler</string>
     <string name="filter">Filtre</string>
     <string name="add">Ekle</string>
+    <string name="import_book">İçe Aktar</string>
     <string name="books">Kitaplar</string>
     <string name="add_books_toolbar">Kitap Ekle</string>
     <string name="book_hint">Kitap</string>

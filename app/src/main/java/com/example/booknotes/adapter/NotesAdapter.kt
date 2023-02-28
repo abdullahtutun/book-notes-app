@@ -34,20 +34,19 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
 
     override fun onBindViewHolder(holder: NotesAdapter.NotesViewHolder, position: Int) {
         myHolder = holder
-        val item = noteList[position]
-        holder.binding.note = item
+        val data = noteList[position]
+        holder.binding.note = data
 
         if (itemSelectedList.isEmpty()){
             holder.binding.cardNote.setCardBackgroundColor(Color.WHITE)
         }
 
-
         holder.binding.root.setOnClickListener{
-            clickedCard(holder, item)
+            clickedCard(holder, data)
         }
 
         holder.binding.root.setOnLongClickListener {
-            selectItem(holder, item!!)
+            selectItem(holder, data)
             true
         }
     }
@@ -57,7 +56,7 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
     }
     
     private fun clickedCard(holder: NotesAdapter.NotesViewHolder, item: Note){
-        if(itemSelectedList.contains(item!!)){
+        if(itemSelectedList.contains(item)){
             itemSelectedList.removeAt(itemSelectedList.indexOf(item))
             holder.binding.cardNote.setCardBackgroundColor(Color.WHITE)
             bindingNotesFragment.toolbarNotes.tvLongClickedItemCount.text = itemSelectedList.size.toString()
@@ -69,7 +68,7 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
              }
 
         } else if(isEnable){
-            selectItem(holder,item!!)
+            selectItem(holder,item)
 
         } else {
             if(!isMaxLines){
@@ -83,22 +82,25 @@ class NotesAdapter(val context: Context, var noteList: List<Note>, private val b
     }
 
     private fun selectItem(holder: NotesAdapter.NotesViewHolder, item: Note){
-        isEnable = true
-        itemSelectedList.add(item!!)
-        holder.binding.cardNote.setCardBackgroundColor(Color.parseColor("#dcdcdc"))
-        bindingNotesFragment.toolbarNotes.tvLongClickedItemCount.text = itemSelectedList.size.toString()
-        setToolbar(true)
+        if(!itemSelectedList.contains(item)){
+            isEnable = true
+            itemSelectedList.add(item)
+            holder.binding.cardNote.setCardBackgroundColor(Color.parseColor("#dcdcdc"))
+            bindingNotesFragment.toolbarNotes.tvLongClickedItemCount.text = itemSelectedList.size.toString()
+            setToolbar(true)
+        }
+
     }
 
     fun setStarOfNote(vm: NotesViewModel){
         if(itemSelectedList.isNotEmpty()) {
             itemSelectedList.forEach {
                 if (it!!.isFavorite == 0){
-                    var note = Note(it!!.id, it.note, it.pageNo, it.bookName,1, it.createdDate)
+                    val note = Note(it.id, it.note, it.pageNo, it.bookName,1, it.createdDate)
                     vm.updateNote(note)
 
                 } else{
-                    var note = Note(it!!.id, it.note, it.pageNo, it.bookName,0, it.createdDate)
+                    val note = Note(it.id, it.note, it.pageNo, it.bookName,0, it.createdDate)
                     vm.updateNote(note)
                 }
                 myHolder.binding.ivNoteStar.visibility = View.VISIBLE
