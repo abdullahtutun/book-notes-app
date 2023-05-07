@@ -12,7 +12,6 @@ import javax.inject.Inject
 class AddBookViewModel @Inject constructor(private val dao: BooksDao): ViewModel() {
     private val TAG = "AddBookViewModel"
     var bookColor: MutableLiveData<Int> = MutableLiveData<Int>()
-    var bookTextColor: MutableLiveData<Int> = MutableLiveData<Int>()
 
     fun addBook(book: Book) {
         try {

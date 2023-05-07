@@ -11,12 +11,14 @@ import com.example.booknotes.R
 import com.example.booknotes.databinding.CardBookBinding
 import com.example.booknotes.databinding.FragmentBooksBinding
 import com.example.booknotes.model.Book
+import com.example.booknotes.util.isBrightColor
 import com.example.booknotes.view.BooksFragmentDirections
 import com.example.booknotes.viewModel.BooksViewModel
 
 class BooksAdapter(var bookList: List<Book>, private val bindingBooksFragment: FragmentBooksBinding) : RecyclerView.Adapter<BooksAdapter.BooksViewHolder>(){
     private var isEnable: Boolean = false
     private var itemSelectedList = mutableListOf<Book?>()
+    var bookName: String? = null
 
     class BooksViewHolder(val binding: CardBookBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -32,6 +34,17 @@ class BooksAdapter(var bookList: List<Book>, private val bindingBooksFragment: F
     override fun onBindViewHolder(holder: BooksAdapter.BooksViewHolder, position: Int) {
         val data = bookList[position]
         holder.binding.book = data
+        
+        if(data.bookColor!!.isBrightColor()){
+            holder.binding.bookName.setTextColor(Color.BLACK)
+            holder.binding.bookAuthor.setTextColor(Color.BLACK)
+            holder.binding.bookGenre.setTextColor(Color.BLACK)
+        } else {
+            holder.binding.bookName.setTextColor(Color.WHITE)
+            holder.binding.bookAuthor.setTextColor(Color.WHITE)
+            holder.binding.bookGenre.setTextColor(Color.WHITE)
+        }
+
 
         if (itemSelectedList.isEmpty()){
             holder.binding.clCard.setBackgroundColor(data.bookColor!!)
@@ -43,6 +56,7 @@ class BooksAdapter(var bookList: List<Book>, private val bindingBooksFragment: F
 
         holder.binding.root.setOnLongClickListener {
             selectItem(holder, data)
+            bookName = data.bookName
             true
         }
 

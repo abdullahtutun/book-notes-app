@@ -60,10 +60,6 @@ dependencies {
     implementation "androidx.room:room-runtime:2.4.3"
     kapt "androidx.room:room-compiler:2.4.3"
 
-    /*implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.5.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1' */
-
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0'
 
     //Hilt
@@ -71,6 +67,9 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     implementation 'com.github.duanhong169:colorpicker:1.1.5'
+
+    //PDF
+    implementation 'com.itextpdf:itextg:5.5.10'
 
 }
 

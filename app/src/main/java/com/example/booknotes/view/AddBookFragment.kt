@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import com.example.booknotes.R
 import com.example.booknotes.databinding.FragmentAddBookBinding
 import com.example.booknotes.model.Book
+import com.example.booknotes.util.isBrightColor
 import com.example.booknotes.viewModel.AddBookViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import top.defaults.colorpicker.ColorPickerPopup
@@ -72,7 +73,7 @@ class AddBookFragment : Fragment() {
         viewModel.bookColor.observe(viewLifecycleOwner) {
             binding.includeBook.clCard.setBackgroundColor(it)
 
-            if(isBrightColor(it)) {
+            if(it.isBrightColor()) {
                 binding.includeBook.bookName.setTextColor(Color.BLACK)
                 binding.includeBook.bookAuthor.setTextColor(Color.BLACK)
                 binding.includeBook.bookGenre.setTextColor(Color.BLACK)
@@ -83,22 +84,6 @@ class AddBookFragment : Fragment() {
             }
         }
 
-    }
-
-    private fun isBrightColor(color: Int): Boolean {
-        if (android.R.color.transparent == color) return true
-        var rtnValue = false
-        val rgb = intArrayOf(Color.red(color), Color.green(color), Color.blue(color))
-        val brightness = sqrt(
-            rgb[0] * rgb[0] * .241 + (rgb[1]
-                    * rgb[1] * .691) + rgb[2] * rgb[2] * .068
-        ).toInt()
-
-        // color is light
-        if (brightness >= 200) {
-            rtnValue = true
-        }
-        return rtnValue
     }
 
     private fun setBookText() {
